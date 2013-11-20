@@ -1,10 +1,9 @@
-
 ## - This file was created by IntelliJ IDEA 12.0.4 for binding GitHub repository - ##
 
-**************
+*************************************************************************************
 
-Web Application using Java, JavaServer Pages, HTML and SQL. 
-Its goal is that users insert in a DataBase the students’ information 
-so as to manage this information about their laboratory training.
+Development of a web application using JavaServer Pages, Java, HTML and SQL. 
+The application allows the user to insert information into the database related 
+to students in order to manage their laboratory training.
 
-**************
+*************************************************************************************
