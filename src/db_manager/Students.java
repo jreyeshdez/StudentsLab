@@ -2,11 +2,11 @@ package db_manager;
 
 public class Students {       
     private Integer id;
-    private String name;
+    private String sname;
     private String surname;
     private String email;
     private String idnum;
-    private String date;
+    private String sdate;
     private int idprob;
     private int idpract;
     private String problemgroup;
@@ -19,17 +19,17 @@ public class Students {
         this.id = id;
     }
 
-    public Students(Integer id, int idprob, int idpract, String idnum, String name, String surname, String email, String problemgroup, String labgroup, String date) {
+    public Students(Integer id, int idprob, int idpract, String idnum, String sname, String surname, String email, String problemgroup, String labgroup, String sdate) {
         this.id = id;
         this.idprob = idprob;
         this.idpract = idpract;
-        this.name = name;
+        this.sname = sname;
         this.surname = surname;
         this.idnum = idnum;
         this.email = email;
         this.problemgroup = problemgroup;
         this.labgroup = labgroup;
-        this.date = date;
+        this.sdate = sdate;
 
     }
 
@@ -48,12 +48,12 @@ public class Students {
     public void setIdnum(String idnum) {
         this.idnum = idnum;
     }
-    public String getName() {
-        return name;
+    public String getSname() {
+        return sname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSname(String sname) {
+        this.sname = sname;
     }
 
     public String getSurname() {
@@ -72,12 +72,12 @@ public class Students {
         this.email = email;
     }
 
-    public String getDate() {
-        return date;
+    public String getSdate() {
+        return sdate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setSdate(String sdate) {
+        this.sdate = sdate;
     }
 
     public int getIdprob() {

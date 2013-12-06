@@ -2,14 +2,14 @@ package db_manager;
 
 public class ProblemGroups {
     private Integer id;
-    private String group;
+    private String pgroup;
 
     public ProblemGroups() {
     }
 
-    public ProblemGroups(Integer id, String group) {
+    public ProblemGroups(Integer id, String pgroup) {
         this.id = id;
-        this.group = group;
+        this.pgroup = pgroup;
     }
 
     public Integer getId() {
@@ -20,11 +20,11 @@ public class ProblemGroups {
         this.id = id;
     }
 
-    public String getGroup() {
-        return group;
+    public String getPgroup() {
+        return pgroup;
     }
 
-    public void setGroup(String group) {
-        this.group = group;
+    public void setPgroup(String pgroup) {
+        this.pgroup = pgroup;
     }
 }

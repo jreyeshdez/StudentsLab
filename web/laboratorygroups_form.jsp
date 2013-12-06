@@ -13,14 +13,14 @@
                     <%
                         String action=request.getParameter("action");
                         String id=request.getParameter("id");
-                        String group=request.getParameter("group");
-                        if(group==null){
-                            group="";
+                        String lgroup=request.getParameter("lgroup");
+                        if(lgroup==null){
+                            lgroup="";
                         }
                     %>
                     <td>Group:</td>
                     <td>
-                        <input type="text" name="group" value="<%=group %>" size="15">
+                        <input type="text" name="lgroup" value="<%=lgroup %>" size="15">
                     </td>
                 </tr>
                 <tr>

@@ -17,20 +17,20 @@ public class DBStudents {
         MyConnection = dbconn.getConnection();
 	}
 
-	public boolean isStudentInserted(String id, String name, String surname, String email, int idprob, int idpract) {
+	public boolean isStudentInserted(String idnum, String name, String surname, String email, int idprob, int idpract) {
 		boolean res = false;
 		PreparedStatement stmt = null;
         Date date = new Date();
         Timestamp stamp = new Timestamp (date.getTime());
 		try {
-            stmt= MyConnection.prepareStatement("Insert into estudiantes_t (nombre, apellidos, email, idprob, idpract, fecha, dni) Values (?,?,?,?,?,?,?)");
+            stmt= MyConnection.prepareStatement("Insert into students (sname, surname, email, idprob, idpract, sdate, idnum) Values (?,?,?,?,?,?,?)");
             stmt.setString(1, name);
             stmt.setString(2, surname);
             stmt.setString(3, email);
             stmt.setInt(4, idprob);
             stmt.setInt(5, idpract);
             stmt.setTimestamp(6, stamp);
-            stmt.setString(7, id);
+            stmt.setString(7, idnum);
             stmt.executeUpdate();
             res=true;
 
@@ -51,10 +51,10 @@ public class DBStudents {
 		boolean res = false;
 		PreparedStatement stmt = null;
 		try {
-            stmt= MyConnection.prepareStatement("DELETE FROM estudiantes_t WHERE id=?");
+            stmt= MyConnection.prepareStatement("DELETE FROM students WHERE id=?");
 			stmt.setInt(1, id);                    			
             stmt.executeUpdate();
-            /**stmt=MyConnection.prepareStatement("TRUNCATE estudiantes_t");
+            /**stmt=MyConnection.prepareStatement("TRUNCATE students");
              stmt.executeUpdate(); //delete whole table**/
             res=true;
 
@@ -77,17 +77,17 @@ public class DBStudents {
 	 *
 	 * @return <code>true</code> - operation successfull, <code>false</code> - error
 	 */
-	public boolean isStudentUpdated(int id, String dni, String name, String surname, String email, int idprob, int idpract) {
+	public boolean isStudentUpdated(int id, String idnum, String name, String surname, String email, int idprob, int idpract) {
 		boolean res = false;
 		PreparedStatement stmt = null;
         Date date = new Date();
         Timestamp stamp = new Timestamp (date.getTime());
 		try {
-            stmt= MyConnection.prepareStatement("UPDATE estudiantes_t SET nombre=?, apellidos=?, email=?, dni=?, idprob=?, idpract=?, fecha=? WHERE id=?");
+            stmt= MyConnection.prepareStatement("UPDATE students SET sname=?, surname=?, email=?, idnum=?, idprob=?, idpract=?, sdate=? WHERE id=?");
             stmt.setString(1, name);
             stmt.setString(2, surname);
             stmt.setString(3, email);
-            stmt.setString(4, dni);
+            stmt.setString(4, idnum);
 			stmt.setInt(5, idprob); 
             stmt.setInt(6, idpract);
             stmt.setTimestamp(7, stamp);
@@ -113,25 +113,26 @@ public class DBStudents {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
-            stmt= MyConnection.prepareStatement("Select estudiantes_t.*,grupo_practicas_t.grupo " +
-                    "as grupo_pract,grupo_problemas_t.grupo " +
-                    "as grupo_prob From estudiantes_t " +
-                    "Inner Join grupo_practicas_t " +
-                    "ON grupo_practicas_t.id = estudiantes_t.idpract " +
-                    "Inner Join grupo_problemas_t " +
-                    "ON grupo_problemas_t.id = estudiantes_t.idprob");
+            stmt= MyConnection.prepareStatement("Select students.*,laboratorygroups.lgroup " +
+                    "as lab_group,problemgroups.pgroup " +
+                    "as prob_group From students " +
+                    "Inner Join laboratorygroups " +
+                    "ON laboratorygroups.id = students.idpract " +
+                    "Inner Join problemgroups " +
+                    "ON problemgroups.id = students.idprob");
             rs=stmt.executeQuery();
             while (rs.next()) {
-                students.add(new Students(rs.getInt("id"),
+                students.add(new Students(
+                        rs.getInt("id"),
                         rs.getInt("idprob"),
                         rs.getInt("idpract"),
-                        rs.getString("dni"),
-                        rs.getString("nombre"),
-                        rs.getString("apellidos"),
+                        rs.getString("idnum"),
+                        rs.getString("sname"),
+                        rs.getString("surname"),
                         rs.getString("email"),
-                        rs.getString("grupo_prob"),
-                        rs.getString("grupo_pract"),
-                        rs.getString("fecha")));
+                        rs.getString("prob_group"),
+                        rs.getString("lab_group"),
+                        rs.getString("sdate")));
             }
 
 		}catch (SQLException e) {

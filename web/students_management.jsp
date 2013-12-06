@@ -14,10 +14,10 @@
         <%
             String id=request.getParameter("id");
             String idnum=request.getParameter("idnum");
-            String name=request.getParameter("name");
+            String sname=request.getParameter("sname");
             String surname=request.getParameter("surname");
             String email=request.getParameter("email");
-            String date=request.getParameter("date");
+            String sdate=request.getParameter("sdate");
             String action =request.getParameter("action");
             String idprob=request.getParameter("idprob");
             String idpract=request.getParameter("idpract");
@@ -25,21 +25,14 @@
             DBStudents operation =new DBStudents();
 
             if (action !=null && action.equals("insert")) {
-                /**out.println("action: "+action);
-                out.println("idnum: "+idnum);
-                out.println("name: "+name);
-                out.println("surname: "+surname);
-                out.println("mail: "+email);
-                out.println("idprob: "+idprob);
-                out.println("idpract: "+idpract);**/
-                if (operation.isStudentInserted(idnum, name, surname, email, Integer.parseInt(idprob), Integer.parseInt(idpract)))
+                if (operation.isStudentInserted(idnum, sname, surname, email, Integer.parseInt(idprob), Integer.parseInt(idpract)))
                     out.print("<script language='JavaScript'> alert('Data have been added into the DB')</script>");
                 else
                     out.print("<script language='JavaScript'> alert('There was an error inserting the data')</script>");
             }
 
             if (action !=null && action.equals("update")) {
-                if(operation.isStudentUpdated(Integer.parseInt(id), idnum, name, surname, email, Integer.parseInt(idprob), Integer.parseInt(idpract)))
+                if(operation.isStudentUpdated(Integer.parseInt(id), idnum, sname, surname, email, Integer.parseInt(idprob), Integer.parseInt(idpract)))
                     out.print("<script language='JavaScript'> alert('Data have been updated into the DB')</script>");
                 else
                     out.print("<script language='JavaScript'> alert('There was an error updating the data')</script>");
@@ -56,7 +49,7 @@
 
         <center><h2><a href="students_form.jsp?action=insert">Insert</a></h2></center><br>
         <table align="center" border="0">
-            <th>ID</th><th>Name</th><th>Surname</th><th>ID Num</th><th>eMail</th><th>Laboratory Group</th><th>Problem Group</th><th>Date</th>
+            <th>ID</th><th>Name</th><th>Surname</th><th>ID Num</th><th>E-mail</th><th>Laboratory Group</th><th>Problem Group</th><th>Date</th>
   
         <%
             Students row = new Students();
@@ -68,7 +61,7 @@
                 out.print("<tr><td>");
                 out.print(row.getId());
                 out.print("</td><td>");
-                out.print(row.getName());
+                out.print(row.getSname());
                 out.print("</td><td>");
                 out.print(row.getSurname());
                 out.print("</td><td>");
@@ -80,11 +73,11 @@
                 out.print("</td><td>");
                 out.print(row.getProblemgroup());
                 out.print("</td><td>");
-                out.print(row.getDate());
+                out.print(row.getSdate());
                 out.print("</td><td>");
                 out.print("<a href='students_form.jsp?action=update&id="+ row.getId()
                         +"&idnum="+ row.getIdnum()
-                        +"&name="+ row.getName()
+                        +"&sname="+ row.getSname()
                         +"&surname="+ row.getSurname()
                         +"&email="+ row.getEmail()
                         +"&idprob="+ row.getIdprob()

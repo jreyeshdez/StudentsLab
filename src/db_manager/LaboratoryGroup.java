@@ -2,14 +2,14 @@ package db_manager;
 
 public class LaboratoryGroup {
     private Integer id;
-    private String group;
+    private String lgroup;
 
     public LaboratoryGroup() {
     }
 
-    public LaboratoryGroup(Integer id, String group) {
+    public LaboratoryGroup(Integer id, String lgroup) {
         this.id = id;
-        this.group = group;
+        this.lgroup = lgroup;
     }
 
     public Integer getId() {
@@ -20,11 +20,11 @@ public class LaboratoryGroup {
         this.id = id;
     }
 
-    public String getGroup() {
-        return group;
+    public String getLgroup() {
+        return lgroup;
     }
 
-    public void setGroup(String group) {
-        this.group = group;
+    public void setLgroup(String lgroup) {
+        this.lgroup = lgroup;
     }
 }

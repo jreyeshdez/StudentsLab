@@ -15,12 +15,12 @@ public class DBLaboratoryGroup {
         MyConnection = dbconn.getConnection();
 	}
 
-	public boolean isLabGroupInserted(String value) {
+	public boolean isLabGroupInserted(String group) {
 		boolean res = false;
 		PreparedStatement stmt = null;
 		try {
-            stmt= MyConnection.prepareStatement("INSERT INTO grupo_practicas_t (grupo) VALUES (?)");
-            stmt.setString(1, value);
+            stmt= MyConnection.prepareStatement("INSERT INTO laboratorygroups (lgroup) VALUES (?)");
+            stmt.setString(1, group);
             stmt.executeUpdate();
             res=true;
 		} catch (SQLException e) {
@@ -41,10 +41,10 @@ public class DBLaboratoryGroup {
 		boolean res = false;
 		PreparedStatement stmt = null;
 		try {
-            stmt= MyConnection.prepareStatement("DELETE FROM grupo_practicas_t WHERE id=?");
+            stmt= MyConnection.prepareStatement("DELETE FROM laboratorygroups WHERE id=?");
             stmt.setInt(1, id);
             stmt.executeUpdate();
-            /**stmt=MyConnection.prepareStatement("TRUNCATE grupo_practicas_t");
+            /**stmt=MyConnection.prepareStatement("TRUNCATE laboratorygroups");
             stmt.executeUpdate();**/
             res=true;
 
@@ -62,12 +62,12 @@ public class DBLaboratoryGroup {
 		return res;
 	}
 
-	public boolean isLabGroupUpdated(int id, String value) {
+	public boolean isLabGroupUpdated(int id, String group) {
 		boolean res = false;
 		PreparedStatement stmt = null;
 		try {
-            stmt= MyConnection.prepareStatement("UPDATE grupo_practicas_t SET grupo=? WHERE id=?");
-            stmt.setString(1, value);
+            stmt= MyConnection.prepareStatement("UPDATE laboratorygroups SET lgroup=? WHERE id=?");
+            stmt.setString(1, group);
             stmt.setInt(2, id);
             stmt.executeUpdate();
             int[] aiTota1Updated=stmt.executeBatch();
@@ -90,10 +90,10 @@ public class DBLaboratoryGroup {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
-            stmt= MyConnection.prepareStatement("SELECT id, grupo FROM grupo_practicas_t");
+            stmt= MyConnection.prepareStatement("SELECT id, lgroup FROM laboratorygroups");
             rs=stmt.executeQuery();
             while (rs.next()) {
-                laboratoryGroups.add(new LaboratoryGroup(rs.getInt("id"), rs.getString("grupo")));
+                laboratoryGroups.add(new LaboratoryGroup(rs.getInt("id"), rs.getString("lgroup")));
             }
 
 		} catch (SQLException e) {

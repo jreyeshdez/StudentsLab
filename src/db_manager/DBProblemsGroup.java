@@ -15,12 +15,12 @@ public class DBProblemsGroup {
         MyConnection = dbconn.getConnection();
 	}
 
-	public boolean isProblemGroupInserted(String value) {
+	public boolean isProblemGroupInserted(String group) {
 		boolean res = false;
 		PreparedStatement stmt = null;
 		try {
-            stmt= MyConnection.prepareStatement("INSERT INTO grupo_problemas_t (grupo) VALUES (?)");
-            stmt.setString(1, value);
+            stmt= MyConnection.prepareStatement("INSERT INTO problemgroups (pgroup) VALUES (?)");
+            stmt.setString(1, group);
             stmt.executeUpdate();
             res=true;
 		} catch (SQLException e) {
@@ -41,10 +41,10 @@ public class DBProblemsGroup {
 		boolean res = false;
 		PreparedStatement stmt = null;
 		try {
-            stmt= MyConnection.prepareStatement("DELETE FROM grupo_problemas_t WHERE id=?");
+            stmt= MyConnection.prepareStatement("DELETE FROM problemgroups WHERE id=?");
             stmt.setInt(1, id);
             stmt.executeUpdate();
-            /**stmt=MyConnection.prepareStatement("TRUNCATE grupo_problemas_t");
+            /**stmt=MyConnection.prepareStatement("TRUNCATE problemgroups");
             stmt.executeUpdate; **/
             res=true;
 		} catch (SQLException e) {
@@ -61,12 +61,12 @@ public class DBProblemsGroup {
 		return res;
 	}
 
-	public boolean isProblemGroupUpdated(int id, String nombre) {
+	public boolean isProblemGroupUpdated(int id, String group) {
 		boolean res = false;
 		PreparedStatement stmt = null;
 		try {
-            stmt= MyConnection.prepareStatement("UPDATE grupo_problemas_t SET grupo=? WHERE id=?");
-            stmt.setString(1, nombre);
+            stmt= MyConnection.prepareStatement("UPDATE problemgroups SET pgroup=? WHERE id=?");
+            stmt.setString(1, group);
             stmt.setInt(2, id);
             stmt.executeUpdate();
             res=true;
@@ -88,10 +88,10 @@ public class DBProblemsGroup {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
-            stmt= MyConnection.prepareStatement("SELECT id, grupo FROM grupo_problemas_t");
+            stmt= MyConnection.prepareStatement("SELECT id, pgroup FROM problemgroups");
             rs=stmt.executeQuery();
             while (rs.next()) {
-                problemGroups.add(new ProblemGroups(rs.getInt("id"), rs.getString("grupo")));
+                problemGroups.add(new ProblemGroups(rs.getInt("id"), rs.getString("pgroup")));
             }
 		} catch (SQLException e) {
 			System.out.println("Exception getting problem groups: " + e.getMessage());

@@ -14,14 +14,14 @@
                     <%
                         String id=request.getParameter("id");
                         String idnum=request.getParameter("idnum");
-                        String name=request.getParameter("name");
+                        String sname=request.getParameter("sname");
                         String surname=request.getParameter("surname");
                         String email=request.getParameter("email");
                         String action=request.getParameter("action");
                         String idprob=request.getParameter("idprob");
                         String idpract=request.getParameter("idpract");
-                        if(name==null && surname==null && email==null && idnum==null){
-                            name="";
+                        if(sname==null && surname==null && email==null && idnum==null){
+                            sname="";
                             surname="";
                             email="";
                             idnum="";
@@ -32,7 +32,7 @@
                 </tr>
                 <tr>
                     <td>NAME:</td>
-                        <td><input type="text" name="name" value="<%=name %>" size="15"></td>
+                        <td><input type="text" name="sname" value="<%=sname %>" size="15"></td>
                 </tr>
                 <tr>
                     <td>SURNAME:</td>
@@ -58,7 +58,7 @@
                                     if (idprob!=null && row1.getId()==Integer.parseInt(idprob))
                                         out.print(" selected");
                                     out.print(">");
-                                    out.print(row1.getGroup());
+                                    out.print(row1.getPgroup());
                                     out.print("</option>");
                                     i++;
                                 }
@@ -84,7 +84,7 @@
                                     if (idpract!=null && row.getId()==Integer.parseInt(idpract))
                                         out.print(" selected");
                                     out.print(">");
-                                    out.print(row.getGroup());
+                                    out.print(row.getLgroup());
                                     out.print("</option>");
                                     k++;
                                 }

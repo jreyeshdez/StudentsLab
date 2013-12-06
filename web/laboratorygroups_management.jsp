@@ -14,20 +14,20 @@
         <br>
         <%
             String action=request.getParameter("action");
-            String group=request.getParameter("group");
+            String lgroup=request.getParameter("lgroup");
             String id=request.getParameter("id");
 
             DBLaboratoryGroup operation =new DBLaboratoryGroup();
 
             if (action !=null && action.equals("insert")) {
-                if (operation.isLabGroupInserted(group))
+                if (operation.isLabGroupInserted(lgroup))
                     out.print("<script language='JavaScript'> alert('Data have been added into the DB')</script>");
                 else
                     out.print("<script language='JavaScript'> alert('There was an error inserting the data')</script>");
             }
 
             if (action !=null && action.equals("update")) {
-                if(operation.isLabGroupUpdated((Integer.parseInt(id)), group))
+                if(operation.isLabGroupUpdated((Integer.parseInt(id)), lgroup))
                     out.print("<script language='JavaScript'> alert('Data have been updated into the DB')</script>");
                 else
                     out.print("<script language='JavaScript'> alert('There was an error updating the data')</script>");
@@ -55,12 +55,12 @@
                 out.print("<tr><td>");
                 out.print(row.getId());
                 out.print("</td><td>");
-                out.print(row.getGroup());
+                out.print(row.getLgroup());
                 out.print("</td><td>");
                 out.print("<a href='laboratorygroups_form.jsp?action=update&id=");
                 out.print(row.getId());
-                out.print("&group=");
-                out.print(row.getGroup());
+                out.print("&lgroup=");
+                out.print(row.getLgroup());
                 out.print("'>Edit</a> <a href='laboratorygroups_management.jsp?action=delete&id=");
                 out.print(row.getId() + "' ");
                 out.print(">Delete</a></td></tr>");

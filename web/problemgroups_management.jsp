@@ -14,19 +14,19 @@
             <br>
                 <%
                     String action =request.getParameter("action");
-                    String group=request.getParameter("group");
+                    String pgroup=request.getParameter("pgroup");
                     String id=request.getParameter("id");
 
 	                DBProblemsGroup operation =new DBProblemsGroup();
                     if (action !=null && action.equals("insert")) {
-                        if (operation.isProblemGroupInserted(group))
+                        if (operation.isProblemGroupInserted(pgroup))
                             out.print("<script language='JavaScript'> alert('Data have been inserted into the DB')</script>");
                         else
                             out.print("<script language='JavaScript'> alert('There was an error inserting the data')</script>");
                     }
 
                     if (action !=null && action.equals("update")) {
-                        if(operation.isProblemGroupUpdated((Integer.parseInt(id)), group))
+                        if(operation.isProblemGroupUpdated((Integer.parseInt(id)), pgroup))
                             out.print("<script language='JavaScript'> alert('Data have been updated into the DB')</script>");
                         else
                             out.print("<script language='JavaScript'> alert('There was an error updating the data')</script>");
@@ -53,12 +53,12 @@
                         out.print("<tr><td>");
                         out.print(row.getId());
                         out.print("</td><td>");
-                        out.print(row.getGroup());
+                        out.print(row.getPgroup());
                         out.print("</td><td>");
                         out.print("<a href='problemgroups_form.jsp?action=update&id=");
                         out.print(row.getId());
-                        out.print("&group=");
-                        out.print(row.getGroup());
+                        out.print("&pgroup=");
+                        out.print(row.getPgroup());
                         out.print("'>Edit</a> <a href='problemgroups_management.jsp?action=delete&id=");
                         out.print(row.getId() + "' ");
                         out.print(">Delete</a></td></tr>");
