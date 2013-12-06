@@ -2,8 +2,8 @@
 
 *************************************************************************************
 
-Development of a web application using JavaServer Pages, Java, HTML and SQL. 
+Development of a web application using Java, JavaServer Pages, JavaScript, HTML and SQL.
 The application allows the user to insert information into the database related 
-to students in order to manage their laboratory training.
+to students in order to manage their laboratory schedule.
 
 *************************************************************************************
