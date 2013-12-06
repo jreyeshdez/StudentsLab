@@ -90,7 +90,7 @@ public class DBLaboratoryGroup {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
-            stmt= MyConnection.prepareStatement("SELECT id, grupo FROM grupo_practicas_t"); //Añadir sentecia SQL para consultar
+            stmt= MyConnection.prepareStatement("SELECT id, grupo FROM grupo_practicas_t");
             rs=stmt.executeQuery();
             while (rs.next()) {
                 laboratoryGroups.add(new LaboratoryGroup(rs.getInt("id"), rs.getString("grupo")));

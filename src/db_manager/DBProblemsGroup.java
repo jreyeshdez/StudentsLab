@@ -19,7 +19,7 @@ public class DBProblemsGroup {
 		boolean res = false;
 		PreparedStatement stmt = null;
 		try {
-            stmt= MyConnection.prepareStatement("INSERT INTO grupo_problemas_t (grupo) VALUES (?)"); //Añadir sentecia SQL para insertar
+            stmt= MyConnection.prepareStatement("INSERT INTO grupo_problemas_t (grupo) VALUES (?)");
             stmt.setString(1, value);
             stmt.executeUpdate();
             res=true;
