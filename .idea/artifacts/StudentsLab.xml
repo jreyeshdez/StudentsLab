@@ -12,6 +12,9 @@
           <element id="library" level="project" name="mysql-connector-java-5.1.13-bin" />
         </element>
       </element>
+      <element id="library" level="application" name="mysql-connector-java-5.1.13-bin" />
+      <element id="dir-copy" path="$PROJECT_DIR$/src" />
+      <element id="module-output" name="StudentsLab" />
     </root>
   </artifact>
 </component>
