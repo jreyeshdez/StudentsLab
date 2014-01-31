@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="StudentsLab:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="StudentLab-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="StudentsLab:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="mysql-connector-java-5.1.13-bin" />
+          <element id="library" level="project" name="jstl-1.2" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
